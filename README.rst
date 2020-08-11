@@ -103,3 +103,15 @@ document. Ensure posted examples are:
 
 .. |License| image:: https://img.shields.io/badge/License-Apache2-green.svg
    :target: http://www.apache.org/licenses/LICENSE-2.0
+
+Short usages
+-------------
+## Enable profiling
+
+
+## Run profiling
+```
+nsys profile -f true -o net -c cudaProfilerApi --stop-on-range-end true --export sqlite python main.py 
+python -m pyprof.parse net.sqlite > net.dict
+python -m pyprof.prof --csv -c idx,dir,kernel,op,params,sil,device,flops net.dict > net.csv
+```
